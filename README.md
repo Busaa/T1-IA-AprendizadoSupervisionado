@@ -1,7 +1,7 @@
 Nomes:
 Arthur Busanello Decotelli da Silva 334193,
 Débora ...,
-Isabelle ...,
+Isabelle Zirbes,
 Turma A: 8:30 - 10:10
 
 Parâmetros Regressão Linear:
