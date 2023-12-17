@@ -38,9 +38,8 @@ def step_gradient(b, w, data, alpha):
 
     # Atualiza b e w usando o gradiente e a taxa de aprendizado
     new_b = b - (alpha * b_grad)
-    #print(new_b) #usado para verificar a qualidade da taxa de aprendizado
     new_w = w - (alpha * w_grad)
-    #print(new_w)
+    
 
     return new_b, new_w
 
@@ -69,4 +68,3 @@ def fit(data, b, w, alpha, num_iterations):
         w_history.append(w)
 
     return b_history, w_history
-
