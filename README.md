@@ -11,7 +11,8 @@ taxa de aprendizad0 (a) = 0.01
 Número de iterações (n) = 400
 Menor Erro Médio Quadrático encontrado = 8.622785955736925
 
-Análise de Datasets:
--
-- Conclusões
-- 
+
+Análise de Datasets
+Parâmetros etc
+Conclusões
+final
