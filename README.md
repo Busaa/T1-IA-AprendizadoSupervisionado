@@ -1,10 +1,17 @@
-# T1-IA-AprendizadoSupervisionado
+Nomes:
+Arthur Busanello Decotelli da Silva 334193,
+Débora ...,
+Isabelle ...,
+Turma A: 8:30 - 10:10
 
-## entrega dia 12/12
-arquivo de Enunciado ali no pdf
+Parâmetros Regressão Linear:
+coeficiente linear (b) = 0.003553022677464732
+coeficiente angular (w) = 4.9735002323060975
+taxa de aprendizad0 (a) = 0.01
+Número de iterações (n) = 400
+Menor Erro Médio Quadrático encontrado = 8.622785955736925
 
-"As implementações devem ser realizadas em Python 3. Caso precise instalar bibliotecas adicionais
-(assuma que, quando o ambiente de execução não for mencionado, os códigos serão executados em
-uma máquina virtual com uma instalação padrão do Ubuntu e interpretador Python 3.8 com
-Miniconda, pip, numba, numpy, pandas e Tensorflow 2.1), descreva as bibliotecas adicionais no seu
-Readme.md."
+Análise de Datasets:
+-
+- Conclusões
+- 
