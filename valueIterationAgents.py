@@ -43,7 +43,27 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.values = util.Counter()  # A Counter is a dict with default 0
 
         # Write value iteration code here
-        "*** YOUR CODE HERE ***"
+        # número de iterações q devem ser feitas
+        for iteration in range(iterations):
+            # faz uma cópia do dict anterior p atualizá-lo
+            q_values = self.values.copy()
+            # obtém todos os possiveis estados
+            states = self.mdp.getStates()
+            # para cada estado
+            for state in states:
+                # verifica se não está no estado terminal
+                terminal_state = self.mdp.isTerminal(state)
+                if not terminal_state:
+                    # e nao estando,
+                    # computa a melhor ação
+                    best_action = self.computeActionFromValues(state)
+                    # computa o valor da melhor ação
+                    q_value = self.computeQValueFromValues(state, best_action)
+                    # e atualiza aquele valor, naquela pos, na lista de valores
+                    q_values[state] = q_value
+            self.values = q_values
+
+
 
 
     def getValue(self, state):
@@ -58,7 +78,14 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        next_state_n_prob = self.mdp.getTransitionStatesAndProbs(state, action)
+        q_value = 0
+        for next_state, prob in next_state_n_prob:
+            reward = self.mdp.getReward(state, action, next_state)
+            discount = self.discount
+            next_q_value = self.getValue(next_state)
+            q_value += prob * (reward + discount * next_q_value)
+        return q_value
 
     def computeActionFromValues(self, state):
         """
@@ -70,14 +97,37 @@ class ValueIterationAgent(ValueEstimationAgent):
           terminal state, you should return None.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        if self.mdp.isTerminal(state):
+            return None
 
-    def getPolicy(self, state):
+        # else
+        best_action = None
+        # placeholder p melhor acao
+        best_value = float("-inf")
+
+        # todas possíveis ações
+        actions = self.mdp.getPossibleActions(state)
+
+        # para cada ação possível
+        for action in actions:
+            # descobre seu q-valor
+            q_value = self.computeQValueFromValues(state, action)
+            # e caso ele seja melhor doq o melhor até então
+            if q_value > best_value:
+                # atualiza o melhor q-valor
+                best_value = q_value
+                # e qual foi sua ação
+                best_action = action
+
+        return best_action
+
+
+def getPolicy(self, state):
         return self.computeActionFromValues(state)
 
-    def getAction(self, state):
-        "Returns the policy at the state (no exploration)."
-        return self.computeActionFromValues(state)
+def getAction(self, state):
+    "Returns the policy at the state (no exploration)."
+    return self.computeActionFromValues(state)
 
-    def getQValue(self, state, action):
-        return self.computeQValueFromValues(state, action)
+def getQValue(self, state, action):
+    return self.computeQValueFromValues(state, action)
