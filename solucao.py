@@ -16,11 +16,6 @@ class Nodo:
         self.pai = pai
         self.acao = acao
         self.custo = custo
-        self.filhos = []
-
-    # função para adicionar filhos a um nodo
-    def adicionar_filho(self, filho: 'Nodo'):
-        self.filhos.append(filho)
 
     # eq para se a classe dos objetos é a mesma
     def __eq__(self, other):
@@ -31,6 +26,11 @@ class Nodo:
     # hash representação numérica do objeto
     def __hash__(self):
         return hash(self.estado)
+    
+    
+    # representação do objeto nodo em string para visualização
+    def __repr__(self):
+        return f"Nodo(Estado={self.estado}, Pai={self.pai}, Acao={self.acao}, Custo={self.custo})"
 
 
 def testa_movimentos(estado: str) -> list[str]:
@@ -95,8 +95,15 @@ def expande(nodo:Nodo)->Set[Nodo]:
     :param nodo: objeto da classe Nodo
     :return:
     """
-    # substituir a linha abaixo pelo seu codigo
-    raise NotImplementedError
+    if nodo is None:
+        return set()
+    sucessores = sucessor(nodo.estado)
+    nodos_sucessores = set()
+    for acao, novo_estado in sucessores:
+        novo_nodo = Nodo(novo_estado, nodo, acao, nodo.custo + 1)
+        nodos_sucessores.add(novo_nodo)
+    
+    return nodos_sucessores
 
 
 def astar_hamming(estado:str)->list[str]:
